@@ -63,8 +63,107 @@ function teamApp() {
                 );
                 teamArray.push(manager);
                 roleArray.push(answers.managerId);
-                fs.createReadStream();
+                createTeam();
             });
+    }
+
+    //manager can now create a team, function to create team
+    function createTeam() {
+        inquirer
+            .prompt([
+                {
+                    type: 'list',
+                    name: 'next',
+                    message: "What type of employee would you like to add to your team?",
+                    choices: ["Engineer", "Intern", "No additional members."],
+                },
+            ])
+            .then((userChoice) => {
+                switch (userChoice.next) {
+                    case 'Engineer':
+                        addEngineer();
+                        break;
+                    case 'Intern':
+                        addIntern();
+                        break;
+                    case 'None':
+                        buildTeam();
+                }
+            });
+            //create a function if adding an Engineer is selected, the questions to prompt.
+            function addEngineer() {
+                inquirer
+                .prompt([
+                    {
+                        type: "input",
+                        message: "Team members name:",
+                        name: "engineerName"
+                    },
+                    {
+                        type: "input",
+                        message: "Team members employee ID:",
+                        name: "engineerId"
+                    },
+                    {
+                        type: "input",
+                        message: "Team members email address:",
+                        name: "engineerEmail"
+                    },
+                    {
+                        type: "input",
+                        message: "Engineers GitHub ID:",
+                        name: "engineerGithub"
+                    },
+                ])
+                .then((answers) => {
+                    const engineer = new Engineer(
+                        answers.engineerName,
+                        answers.engineerId,
+                        answers.engineerEmail,
+                        answers.engineerGithub,
+                    );
+                    teamArray.push(engineer);
+                    roleArray.push(answers.engineerId);
+                    createTeam();
+                });
+            }
+
+            //Create function if Intern is selected.
+            function addIntern() {
+                inquirer
+                .prompt([
+                    {
+                        type: "input",
+                        message: "Team members name:",
+                        name: "internName"
+                    },
+                    {
+                        type: "input",
+                        message: "Team members employee ID:",
+                        name: "internId"
+                    },
+                    {
+                        type: "input",
+                        message: "Team members email address:",
+                        name: "internEmail"
+                    },
+                    {
+                        type: "input",
+                        message: "Interns school:",
+                        name: "internSchool"
+                    },
+                ])
+                .then((answers) => {
+                    const intern = new Intern(
+                        answers.internName,
+                        answers.internId,
+                        answers.internEmail,
+                        answers.internSchool,
+                    );
+                    teamArray.push(intern);
+                    roleArray.push(answers.internId);
+                    createTeam();
+                });
     }
 }
 
@@ -151,6 +250,36 @@ const writeHtml = (e) => {
 //         message: "Managers Office Number:",
 //         name: "number"
 //     },
+    // {
+    //     type: 'list',
+    //     name: 'next',
+    //     message: "What type of employee would you like to add to your team?",
+    //     choices: ["Manager", "Engineer", "Intern", "No additional members."]
+    // }
+// ];
+
+//Engineer role questions
+// const engineerQuestions = [
+//     {
+//         type: "input",
+//         message: "Team members name:",
+//         name: "name"
+//     },
+//     {
+//         type: "input",
+//         message: "Team members employee ID:",
+//         name: "id"
+//     },
+//     {
+//         type: "input",
+//         message: "Team members email address:",
+//         name: "email"
+//     },
+//     {
+//         type: "input",
+//         message: "Engineers GitHub ID:",
+//         name: "github"
+//     },
 //     {
 //         type: 'list',
 //         name: 'next',
@@ -159,65 +288,35 @@ const writeHtml = (e) => {
 //     }
 // ];
 
-//Engineer role questions
-const engineerQuestions = [
-    {
-        type: "input",
-        message: "Team members name:",
-        name: "name"
-    },
-    {
-        type: "input",
-        message: "Team members employee ID:",
-        name: "id"
-    },
-    {
-        type: "input",
-        message: "Team members email address:",
-        name: "email"
-    },
-    {
-        type: "input",
-        message: "Engineers GitHub ID:",
-        name: "github"
-    },
-    {
-        type: 'list',
-        name: 'next',
-        message: "What type of employee would you like to add to your team?",
-        choices: ["Manager", "Engineer", "Intern", "No additional members."]
-    }
-];
-
 //Interns role questions
-const internQuestions = [
-    {
-        type: "input",
-        message: "Team members name:",
-        name: "name"
-    },
-    {
-        type: "input",
-        message: "Team members employee ID:",
-        name: "id"
-    },
-    {
-        type: "input",
-        message: "Team members email address:",
-        name: "email"
-    },
-    {
-        type: "input",
-        message: "Interns school:",
-        name: "school"
-    },
-    {
-        type: 'list',
-        name: 'next',
-        message: "What type of employee would you like to add to your team?",
-        choices: ["Manager", "Engineer", "Intern", "No additional members."]
-    }
-];
+// const internQuestions = [
+//     {
+//         type: "input",
+//         message: "Team members name:",
+//         name: "name"
+//     },
+//     {
+//         type: "input",
+//         message: "Team members employee ID:",
+//         name: "id"
+//     },
+//     {
+//         type: "input",
+//         message: "Team members email address:",
+//         name: "email"
+//     },
+//     {
+//         type: "input",
+//         message: "Interns school:",
+//         name: "school"
+//     },
+//     {
+//         type: 'list',
+//         name: 'next',
+//         message: "What type of employee would you like to add to your team?",
+//         choices: ["Manager", "Engineer", "Intern", "No additional members."]
+//     }
+// ];
 
 //start process to add members
 function ask(questionArr) {
