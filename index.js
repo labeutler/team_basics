@@ -6,11 +6,11 @@ const intern = require('./lib/intern');
 const manager = require('./lib/manager');
 
 //list of employees
-const Employee = {
-    Intern: "Intern",
-    Engineer: "Engineer",
-    Manager: "Manager",
-};
+// const Employee = {
+//     Intern: "Intern",
+//     Engineer: "Engineer",
+//     Manager: "Manager",
+// };
 
 // employee.getName('name');
 // employee.getId('id');
@@ -21,11 +21,53 @@ const Employee = {
 const inquirer = require('inquirer');
 const fs = require('fs');
 //const { wrap } = require('module');
-//const path = require('path');
+const path = require('path');
 
 
-//create a team
-let team = [];
+//create a team array
+const teamArray = [];
+const roleArray = [];
+
+//create a function to create the manager of the team
+function teamApp() {
+    function createManager() {
+        inquirer
+            .prompt([
+                {
+                    type: "input",
+                    message: "Team members name:",
+                    name: "managerName"
+                },
+                {
+                    type: "input",
+                    message: "Team members employee ID:",
+                    name: "managerId"
+                },
+                {
+                    type: "input",
+                    message: "Team members email address:",
+                    name: "managerEmail"
+                },
+                {
+                    type: "input",
+                    message: "Managers Office Number:",
+                    name: "managerNumber"
+                },
+            ])
+            .then((answers) => {
+                const manager = new Manager(
+                    answers.managerName,
+                    answers.managerId,
+                    answers.managerEmail,
+                    answers.managerNumber
+                );
+                teamArray.push(manager);
+                roleArray.push(answers.managerId);
+                fs.createReadStream();
+            });
+    }
+}
+
 
 //create list of who's being added
 // const roleQuestions = [
@@ -82,40 +124,40 @@ const writeHtml = (e) => {
             </ul>
         </div>
     </div>
-    </div>`;
+</div>`;
 };
 
 //construct employee information in an array
 
 //Management role questions
-const managerQuestions = [
-    {
-        type: "input",
-        message: "Team members name:",
-        name: "name"
-    },
-    {
-        type: "input",
-        message: "Team members employee ID:",
-        name: "id"
-    },
-    {
-        type: "input",
-        message: "Team members email address:",
-        name: "email"
-    },
-    {
-        type: "input",
-        message: "Managers Office Number:",
-        name: "number"
-    },
-    {   
-        type: 'list',
-        name: 'next',
-        message: "What type of employee would you like to add to your team?",
-        choices: ["Manager", "Engineer", "Intern", "No additional members."]
-    }
-];
+// const managerQuestions = [
+//     {
+//         type: "input",
+//         message: "Team members name:",
+//         name: "name"
+//     },
+//     {
+//         type: "input",
+//         message: "Team members employee ID:",
+//         name: "id"
+//     },
+//     {
+//         type: "input",
+//         message: "Team members email address:",
+//         name: "email"
+//     },
+//     {
+//         type: "input",
+//         message: "Managers Office Number:",
+//         name: "number"
+//     },
+//     {
+//         type: 'list',
+//         name: 'next',
+//         message: "What type of employee would you like to add to your team?",
+//         choices: ["Manager", "Engineer", "Intern", "No additional members."]
+//     }
+// ];
 
 //Engineer role questions
 const engineerQuestions = [
@@ -139,7 +181,7 @@ const engineerQuestions = [
         message: "Engineers GitHub ID:",
         name: "github"
     },
-    {   
+    {
         type: 'list',
         name: 'next',
         message: "What type of employee would you like to add to your team?",
@@ -169,7 +211,7 @@ const internQuestions = [
         message: "Interns school:",
         name: "school"
     },
-    {   
+    {
         type: 'list',
         name: 'next',
         message: "What type of employee would you like to add to your team?",
@@ -184,15 +226,15 @@ function ask(questionArr) {
         .then((member) => {
             team.push(member);
             //add manager
-        if (member.next === 'Engineer') {
-            ask(engineerQuestions);
-        } else if (member.next === 'Intern') {
-            ask(internQuestions);
-        } else {
-            profiles(team);
-        }
-    })
-    .catch((err) => console.log(err)); 
+            if (member.next === 'Engineer') {
+                ask(engineerQuestions);
+            } else if (member.next === 'Intern') {
+                ask(internQuestions);
+            } else {
+                profiles(team);
+            }
+        })
+        .catch((err) => console.log(err));
 }
 
 //create team profiles
@@ -220,10 +262,10 @@ function profiles(team) {
         }
     });
 
-//need HTML to put info
-const newHtml = profileCards(profileCards);
+    //need HTML to put info
+    const newHtml = profileCards(profileCards);
 
-writeHtml(newHtml);
+    writeHtml(newHtml);
 };
 
 //to create html
