@@ -4,6 +4,7 @@ const Engineer = require('./lib/engineer');
 const Intern = require('./lib/intern');
 const Manager = require('./lib/manager');
 
+
 //npm packages required
 const inquirer = require('inquirer');
 const fs = require('fs');
@@ -29,7 +30,7 @@ function teamApp() {
                 {
                     type: "input",
                     message: "Team members employee ID:",
-                    name: "managerId"
+                    name: "managerId",
                 },
                 {
                     type: "input",
