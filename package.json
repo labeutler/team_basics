@@ -3,21 +3,26 @@
   "version": "1.0.0",
   "description": "Generator to provide teams basic information",
   "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index",
     "watch": "nodemon index",
     "test": "jest"
   },
+
   "repository": {
     "type": "git",
     "url": "git+https://github.com/labeutler/team_basics.git"
   },
+  
   "keywords": [],
   "author": "lab",
   "license": "ISC",
   "dependencies": {
-    "chalk": "^2.4.1",
     "inquirer": "8.2.4"
   },
   "devDependencies": {

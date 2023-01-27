@@ -1,5 +1,5 @@
 // Building the page showing team results
-const createTeam = team => {
+const generateTeam = team => {
     //Blocks to contain manager, engineer and intern
 
     const createManager = manager => {
@@ -19,7 +19,8 @@ const createTeam = team => {
                     </ul>
                 </div>
             </div>
-        </div>`
+        </div>
+        `;
     };
 
     const createEngineer = engineer => {
@@ -39,7 +40,8 @@ const createTeam = team => {
                     </ul>
                 </div>
             </div>
-        </div>`
+        </div>
+        `;
     };
 
     const createIntern = intern => {
@@ -60,11 +62,13 @@ const createTeam = team => {
                 </div>
             </div>
         </div>
-    </div>`
+    </div>
+    `;
     };
 
 
     //Enter array of information that will be going onto HTML for manager, engineer and intern
+function teamBuilder() {    
     const html = [];
 
     html.push(team
@@ -74,53 +78,85 @@ const createTeam = team => {
     html.push(team
         .filter(employee => employee.getRole() === "Engineer")
         .map(engineer => createEngineer(engineer))
+        .join("")
     );
     html.push(team
         .filter(employee => employee.getRole() === "Intern")
         .map(intern => createIntern(intern))
+        .join("")
     );
+    return html.join("");
+}
 
-    // Required export for page
-    module.exports = team => {
-        return `
-    <!DOCTYPE html>
+// Required export for page
+
+// module.exports = team => {
+//     return 
+const createHTML = 
+    `<!DOCTYPE html>
 <html lang="en">
 
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>Business Frontpage - Start Bootstrap Template</title>
-        <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-        <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="css/styles.css" rel="stylesheet" />
-    </head>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Team Basics<title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="/dist/assets/favicon.ico" />
+    <!-- Bootstrap icons-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" 
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />    
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="/dist/css/styles.css" rel="stylesheet" />
+    <script src="https://kit.fontawesome.com/c502137733.js"></script>
+</head>
     
-    <body>
-        <header class="bg-primary py-5 mb-5">
-            <div class="container h-100">
-                <div class="row h-100 align-items-center">
-                    <div class="col-lg-12">
-                        <h1 class="display-4 text-white mt-5 mb-2">Full Team</h1>
-                    </div>
+<body>
+<header class="bg-dark py-5">
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">My Team</h1>
+    
+  </div>
+</div>
+</header>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="row team-area col-12 d-flex justify-content-center">
+                    ${generateTeam(team)}
                 </div>
             </div>
-        </header>
-        };
-        <!-- Navigation-->
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <div class="container">
-                <a class="navbar-brand" href="#!">Start Bootstrap</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-                <div class="collapse navbar-collapse" id="navbarResponsive">
-                    ${createTeam(team)}
-                </div>
-            </div>
-        </nav>
-    </body>
+        </div>
+        
+<!-- Bootstrap core JS-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Core theme JS-->
+<script src="js/scripts.js"></script>
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+<!-- * *                               SB Forms JS                               * *-->
+<!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+<script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+
+</body>
+<footer class="py-5 bg-dark">
+    <div class="container px-5"><p class="m-0 text-center text-white">Copyright &copy; LAB 2023</p></div>
+</footer>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
 </html>
-`
-    };
-};
+`;
+
+
+    fs.writeFile('dist/team.html', createHTML, function (err) {
+        if (err) throw err;
+        console.log("Team Basics Created");
+    })
+}
+//module.exports = generateTeam;
