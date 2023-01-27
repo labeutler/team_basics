@@ -13,6 +13,9 @@ const path = require('path');
 const OUTPUT_DIR = path.resolve(__dirname, 'output');
 const dirPath = path.join(OUTPUT_DIR, 'team.html');
 
+//per error message stating "rendor is not defined", adding render const to show the output
+const render = require('./src/helper');
+
 //create a team array
 const teamArray = [];
 const roleArray = [];

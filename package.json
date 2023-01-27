@@ -14,7 +14,7 @@
     "url": "git+https://github.com/labeutler/team_basics.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "lab",
   "license": "ISC",
   "dependencies": {
     "chalk": "^2.4.1",
