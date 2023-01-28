@@ -1,4 +1,18 @@
-/@charset "UTF-8"; */
+.jumbotron {
+  border-radius: 0;
+}
+
+.employee-card {
+  box-shadow: 5px 5px 5px gray;
+  margin: 1rem;
+  border: none;
+}
+
+.card-body {
+  background-color: rgb(240, 240, 240);
+}
+
+/* @charset "UTF-8"; */
 /*!
 * Start Bootstrap - Business Frontpage v5.0.8 (https://startbootstrap.com/template/business-frontpage)
 * Copyright 2013-2022 Start Bootstrap
@@ -372,12 +386,12 @@ select:disabled {
   display: none;
 }
 
-button,
-[type=button],
-[type=reset],
-[type=submit] {
-  -webkit-appearance: button;
-}
+/* button, */
+/* [type=button], */
+/* [type=reset], */
+/* [type=submit] { */
+  /* -webkit-appearance: button; */
+/* } */
 button:not(:disabled),
 [type=button]:not(:disabled),
 [type=reset]:not(:disabled),
@@ -434,7 +448,7 @@ legend + * {
 
 [type=search] {
   outline-offset: -2px;
-  -webkit-appearance: textfield;
+  /* -webkit-appearance: textfield; */
 }
 
 /* rtl:raw:
@@ -2487,8 +2501,8 @@ textarea.form-control-lg {
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
-  -webkit-print-color-adjust: exact;
-          color-adjust: exact;
+  /* -webkit-print-color-adjust: exact; */
+          /* color-adjust: exact; */
 }
 .form-check-input[type=checkbox] {
   border-radius: 0.25em;
@@ -9926,7 +9940,7 @@ textarea.form-control-lg {
     text-align: center !important;
   }
 }
-@media (min-width: 1200px) {
+/* @media (min-width: 1200px) {
   .float-xl-start {
     float: left !important;
   }
@@ -10576,8 +10590,8 @@ textarea.form-control-lg {
   .text-xl-center {
     text-align: center !important;
   }
-}
-@media (min-width: 1400px) {
+} */
+/* @media (min-width: 1400px) {
   .float-xxl-start {
     float: left !important;
   }
@@ -11227,8 +11241,8 @@ textarea.form-control-lg {
   .text-xxl-center {
     text-align: center !important;
   }
-}
-@media (min-width: 1200px) {
+} */
+/* @media (min-width: 1200px) {
   .fs-1 {
     font-size: 2.5rem !important;
   }
@@ -11244,8 +11258,8 @@ textarea.form-control-lg {
   .fs-4 {
     font-size: 1.5rem !important;
   }
-}
-@media print {
+} */
+/* @media print {
   .d-print-inline {
     display: inline !important;
   }
@@ -11285,7 +11299,7 @@ textarea.form-control-lg {
   .d-print-none {
     display: none !important;
   }
-}
+} */
 .feature {
   display: inline-flex;
   align-items: center;

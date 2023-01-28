@@ -1,5 +1,5 @@
 // Building the page showing team results
-const generateTeam = team => {
+const renderTeam = team => {
     //Blocks to contain manager, engineer and intern
 
     const createManager = manager => {
@@ -68,7 +68,7 @@ const generateTeam = team => {
 
 
     //Enter array of information that will be going onto HTML for manager, engineer and intern
-function teamBuilder() {    
+// function teamBuilder() {    
     const html = [];
 
     html.push(team
@@ -90,10 +90,13 @@ function teamBuilder() {
 
 // Required export for page
 
-// module.exports = team => {
-//     return 
-const createHTML = 
-    `<!DOCTYPE html>
+
+//const createHTML = 
+
+const render = team => {
+
+    return `
+    <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -127,7 +130,7 @@ const createHTML =
     <div class="container">
         <div class="row">
             <div class="row team-area col-12 d-flex justify-content-center">
-                    ${generateTeam(team)}
+                    ${renderTeam(team)}
                 </div>
             </div>
         </div>
@@ -154,9 +157,6 @@ const createHTML =
 `;
 
 
-    fs.writeFile('dist/team.html', createHTML, function (err) {
-        if (err) throw err;
-        console.log("Team Basics Created");
-    })
-}
-//module.exports = generateTeam;
+ 
+};
+module.exports = render;

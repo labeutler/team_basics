@@ -13,14 +13,17 @@ const DIST_DIR = path.resolve(__dirname, 'dist');
 const distPath = path.join(DIST_DIR, 'team.html');
 
 //per error message stating "rendor is not defined", adding generateTeam const to show the output
-const generateTeam = require('./src/helper');
+const renderTeam = require('./src/helper');
+//const { create } = require('domain');
 
 //create a team array
 const teamArray = [];
-const roleArray = [];
+//const roleArray = [];
 
 //create a function to create the manager of the team
-function teamApp() {
+//function teamApp() {
+
+
     function addManager() {
         inquirer
             .prompt([
@@ -53,7 +56,7 @@ function teamApp() {
                     answers.managerNumber
                 );
                 teamArray.push(manager);
-                roleArray.push(answers.managerId);
+                //roleArray.push(answers.managerId);
                 createTeam();
             });
     }
@@ -66,10 +69,10 @@ function teamApp() {
                     type: 'list',
                     name: 'next',
                     message: "What type of employee would you like to add to your team?",
-                    choices: ["Engineer", "Intern", "No additional members."],
-                },
+                    choices: ["Manager", "Engineer", "Intern", "No additional members."],
+                }
             ])
-            .then((userChoice) => {
+            .then(function (userChoice) {
                 switch (userChoice.next) {
                     case "Manager":
                         addManager();
@@ -84,97 +87,96 @@ function teamApp() {
                         teamBuilder();
                 }
             })
-        }
-        //create a function if adding an Engineer is selected, the questions to prompt.
+    }
+    //create a function if adding an Engineer is selected, the questions to prompt.
     function addEngineer() {
         inquirer
-        .prompt([
-            {
-                type: "input",
-                message: "Team members name:",
-                name: "engineerName"
-            },
-            {
-                type: "input",
-                message: "Team members employee ID:",
-                name: "engineerId"
-            },
-            {
-                type: "input",
-                message: "Team members email address:",
-                name: "engineerEmail"
-            },
-            {
-                type: "input",
-                message: "Engineers GitHub ID:",
-                name: "engineerGithub"
-            },
-        ])
-        .then((answers) => {
-            const engineer = new Engineer(
-                answers.engineerName,
-                answers.engineerId,
-                answers.engineerEmail,
-                answers.engineerGithub,
-            );
-            teamArray.push(engineer);
-            roleArray.push(answers.engineerId);
-            createTeam();
-        });
+            .prompt([
+                {
+                    type: "input",
+                    message: "Team members name:",
+                    name: "engineerName"
+                },
+                {
+                    type: "input",
+                    message: "Team members employee ID:",
+                    name: "engineerId"
+                },
+                {
+                    type: "input",
+                    message: "Team members email address:",
+                    name: "engineerEmail"
+                },
+                {
+                    type: "input",
+                    message: "Engineers GitHub ID:",
+                    name: "engineerGithub"
+                },
+            ])
+            .then((answers) => {
+                const engineer = new Engineer(
+                    answers.engineerName,
+                    answers.engineerId,
+                    answers.engineerEmail,
+                    answers.engineerGithub,
+                );
+                teamArray.push(engineer);
+                //roleArray.push(answers.engineerId);
+                createTeam();
+            });
     }
 
-        //Create function if Intern is selected.
+    //Create function if Intern is selected.
     function addIntern() {
         inquirer
-        .prompt([
-            {
-                type: "input",
-                message: "Team members name:",
-                name: "internName"
-            },
-            {
-                type: "input",
-                message: "Team members employee ID:",
-                name: "internId"
-            },
-            {
-                type: "input",
-                message: "Team members email address:",
-                name: "internEmail"
-            },
-            {
-                type: "input",
-                message: "Interns school:",
-                name: "internSchool"
-            },
-        ])
-        .then((answers) => {
-            const intern = new Intern(
-                answers.internName,
-                answers.internId,
-                answers.internEmail,
-                answers.internSchool,
-            );
-            teamArray.push(intern);
-            roleArray.push(answers.internId);
-            createTeam();
-        });
-    }   
-
-        //Function if no other team members are needed
-    function teamBuilder() {
-        // if (!fs.existsSync(DIST_DIR)) {
-        //     fs.mkdirSync(DIST_DIR);
-        // }
-        //fs.writeFileSync(distPath, generateTeam(teamArray), 'utf-8');
-        // fs.writeFile('dist/team.html', contentHTML, function (err) {
-        //     if (err) throw err;
-        //     console.log("Team Basics Created");
-        // })
+            .prompt([
+                {
+                    type: "input",
+                    message: "Team members name:",
+                    name: "internName"
+                },
+                {
+                    type: "input",
+                    message: "Team members employee ID:",
+                    name: "internId"
+                },
+                {
+                    type: "input",
+                    message: "Team members email address:",
+                    name: "internEmail"
+                },
+                {
+                    type: "input",
+                    message: "Interns school:",
+                    name: "internSchool"
+                },
+            ])
+            .then((answers) => {
+                const intern = new Intern(
+                    answers.internName,
+                    answers.internId,
+                    answers.internEmail,
+                    answers.internSchool,
+                );
+                teamArray.push(intern);
+                //roleArray.push(answers.internId);
+                createTeam();
+            });
     }
 
-    
-    addManager();
+
+//Function if no other team members are needed
+
+function teamBuilder() {
+    if (!fs.existsSync(DIST_DIR)) {
+        fs.mkdirSync(DIST_DIR);
+    } else {
+        fs.writeFileSync(distPath, renderTeam(teamArray), 'utf-8');
+        console.log('Team HTML file created');
+    }
 }
 
-teamApp();
+function startApp() {
+    addManager();
+}
+startApp();
