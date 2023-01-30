@@ -29,7 +29,7 @@ const roleArray = [];
             .prompt([
                 {
                     type: "input",
-                    message: "Team members name:",
+                    message: "Team managers name:",
                     name: "managerName"
                 },
                 {
@@ -69,7 +69,7 @@ const roleArray = [];
                     type: 'list',
                     name: 'next',
                     message: "What type of employee would you like to add to your team?",
-                    choices: ["Manager", "Engineer", "Intern", "No additional members."],
+                    choices: ["Engineer", "Intern", "No additional members."],
                 }
             ])
             .then(function (userChoice) {

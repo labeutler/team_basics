@@ -1,9 +1,9 @@
-# team_basics
-Generator to provide teams basic information
+# Team Basics
+Generator to provide teams basic information.  Providing name, ID number, email and, depending on the department, office number for managers, GitHub link for engineers and School for interns.
 
 ## Description
 
-## User Story
+### User Story
 
 ```md
 AS A manager
@@ -35,14 +35,20 @@ THEN I exit the application, and the HTML is generated
 
 ## Installation
 
-What are the steps required to install your project? Provide a step-by-step description of how to get the development environment running.
+You can find this project by going to this link here:
+
+[GitHub Repository](https://github.com/labeutler/team_basics)
 
 ## Usage
 
-Provide instructions and examples for use. Include screenshots as needed.
+Please watch the video walkthrough that will demonstrate the following:
+* All four tests passing in the command line.
+* How the user will invoke the application from the command line.
+* How a user will ener their responses to all the prompts for the application.
+* How the HTML fill will match the users input.
+[![Videothrough]()]
 
-To add a screenshot, create an `assets/images` folder in your repository and upload your screenshot to it. Then, using the relative file path, add it to your README using the following syntax:
-
+Example of the HTML that will present with results added to the command line prompts.
 ![alt text](assets/images/screenshot.png)
 
 ## Credits
@@ -53,6 +59,8 @@ To add a screenshot, create an `assets/images` folder in your repository and upl
 [Helper with const HTML to push employees](https://www.w3schools.com/js/js_const.asp)
 
 Bootstrap for HTML coding
+
+Use of @askBCS Learning Assistant
 
 ## License
 
