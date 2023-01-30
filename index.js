@@ -18,7 +18,7 @@ const renderTeam = require('./src/helper');
 
 //create a team array
 const teamArray = [];
-//const roleArray = [];
+const roleArray = [];
 
 //create a function to create the manager of the team
 //function teamApp() {
@@ -56,7 +56,7 @@ const teamArray = [];
                     answers.managerNumber
                 );
                 teamArray.push(manager);
-                //roleArray.push(answers.managerId);
+                roleArray.push(answers.managerId);
                 createTeam();
             });
     }
@@ -121,7 +121,7 @@ const teamArray = [];
                     answers.engineerGithub,
                 );
                 teamArray.push(engineer);
-                //roleArray.push(answers.engineerId);
+                roleArray.push(answers.engineerId);
                 createTeam();
             });
     }
@@ -159,7 +159,7 @@ const teamArray = [];
                     answers.internSchool,
                 );
                 teamArray.push(intern);
-                //roleArray.push(answers.internId);
+                roleArray.push(answers.internId);
                 createTeam();
             });
     }

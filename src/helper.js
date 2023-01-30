@@ -5,9 +5,9 @@ const renderTeam = team => {
     const createManager = manager => {
         return `
         <div class="row">
-        <div class="col-md-4 mb-5">
+        
             <div class="card h-100">
-                <div class="card-body">
+                <div class="card-header">
                     <h4 class="card-title">${manager.getName()}</h4>
                     <h3 class="card-title">${manager.getRole()}</h4>
                 </div>
@@ -15,20 +15,20 @@ const renderTeam = team => {
                     <ul class="list-group'>
                         <li class="list-group-item"> ID: ${manager.getId()}</li>
                         <li class="list-group-item"> Email: <a href="mailto:${manager.getEmail()}">${manager.getEmail()}</a></li>
-                        <li class="list-group-item"> GitHub: ${manager.getOfficeNumber()}</li>
+                        <li class="list-group-item"> Office Number: ${manager.getOfficeNumber()}</li>
                     </ul>
                 </div>
             </div>
-        </div>
+        
         `;
     };
 
     const createEngineer = engineer => {
         return `             
         <div class="row">
-        <div class="col-md-4 mb-5">
+        
             <div class="card h-100">
-                <div class="card-body">
+                <div class="card-header">
                     <h4 class="card-title">${engineer.getName()}</h4>
                     <h3 class="card-title">${engineer.getRole()}</h4>
                 </div>
@@ -40,16 +40,16 @@ const renderTeam = team => {
                     </ul>
                 </div>
             </div>
-        </div>
+       
         `;
     };
 
     const createIntern = intern => {
         return `
         <div class="row">
-        <div class="col-md-4 mb-5">
+        
             <div class="card h-100">
-                <div class="card-body">
+                <div class="card-header">
                     <h4 class="card-title">${intern.getName()}</h4>
                     <h3 class="card-title">${intern.getRole()}</h4>
                 </div>
@@ -61,7 +61,7 @@ const renderTeam = team => {
                     </ul>
                 </div>
             </div>
-        </div>
+        
     </div>
     `;
     };
@@ -104,14 +104,12 @@ const render = team => {
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Team Basics<title>
-    <!-- Favicon-->
+    <title>Team Basics</title>
     <link rel="icon" type="image/x-icon" href="/dist/assets/favicon.ico" />
-    <!-- Bootstrap icons-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" 
     integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />    
-    <!-- Core theme CSS (includes Bootstrap)-->
+
     <link href="/dist/css/styles.css" rel="stylesheet" />
     <script src="https://kit.fontawesome.com/c502137733.js"></script>
 </head>
@@ -120,12 +118,10 @@ const render = team => {
 <header class="bg-dark py-5">
 <div class="jumbotron jumbotron-fluid">
   <div class="container">
-    <h1 class="display-4">My Team</h1>
-    
+    <h1 class="display-4">My Team</h1>   
   </div>
 </div>
 </header>
-
 
     <div class="container">
         <div class="row">
