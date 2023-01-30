@@ -46,10 +46,12 @@ Please watch the video walkthrough that will demonstrate the following:
 * How the user will invoke the application from the command line.
 * How a user will ener their responses to all the prompts for the application.
 * How the HTML fill will match the users input.
-[![Videothrough]()]
+
+[![Video walkthrough](./dist/team.html)](https://youtu.be/ztX2lrAgo00)
+
 
 Example of the HTML that will present with results added to the command line prompts.
-![alt text](assets/images/screenshot.png)
+![alt text](/dist/assets/images/sampleHTML.png)
 
 ## Credits
 
